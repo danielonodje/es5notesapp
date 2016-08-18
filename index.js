@@ -1,7 +1,9 @@
 /* Class definition for a simple note taking app
 */
-var notesapp = function(author){
-    this.author = author
+var NotesApp = function(author){
+    if(typeof author === 'string'){
+        this.author = author;                
+    }
     this.notes = [];
 
     this.addNote = function(note_content) {
@@ -60,4 +62,4 @@ var notesapp = function(author){
     }
 }
 
-module.exports = notesapp;
+module.exports = NotesApp;
