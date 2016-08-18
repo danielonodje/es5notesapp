@@ -1,4 +1,4 @@
-var notesapp = require('./').notesapp;
+var notesapp = require('../').notesapp;
 var chai = require('chai');
 var assert = chai.assert;
 
