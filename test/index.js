@@ -1,5 +1,5 @@
 /* Class definition for a simple note taking app
 */
-function NoteApp(author){
+exports.notesapp = function (author){
     this.author = author
 }
