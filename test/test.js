@@ -61,6 +61,20 @@ describe("NotesApp", function() {
             var aftersize = notes.notes.length;
             assert.operator(aftersize,"<", beforesize);
         });
+    });
+
+    describe("searchnote",function(){
+        it("should search for a note containing a given string and return it",function(){
+            var notes = new notesapp;
+            notes.addNote("a note");
+            notes.addNote("another note");
+            notes.addNote("a third note");
+            notes.addNote("a fourth note");
+            var foundnotes = notes.searchNote("third");
+            assert.isArray(foundnotes);
+            assert.equal(foundnotes[0],"Showing results for search [third]");
+            assert.equal(foundnotes[1],"a third note");
+        });
     })
 })
 
