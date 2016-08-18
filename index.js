@@ -1,5 +1,14 @@
 /* Class definition for a simple note taking app
 */
-exports.notesapp = function (author){
+var notesapp = function(author){
     this.author = author
+    this.notes = [];
 }
+
+// notesapp.prototype.notes = [];
+
+notesapp.prototype.addNote = function(note_content) {
+        this.notes.push(note_content);
+    }
+
+module.exports = notesapp;
