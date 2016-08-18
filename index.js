@@ -5,10 +5,12 @@ var notesapp = function(author){
     this.notes = [];
 
     this.addNote = function(note_content) {
+        if(this.isValidNoteContent)
         this.notes.push(note_content);
     }
 
     this.editNote = function(note_id,note_content) {
+        if(this.isValidId(note_id) && this.isValidNoteContent(note_content))
         this.notes[note_id] = note_content;
     }
 
@@ -21,10 +23,12 @@ var notesapp = function(author){
     }
 
     this.getNote = function(note_id) {
+        if(this.isValidId(note_id))
         return this.notes[note_id];
     }
 
     this.deleteNote = function(note_id) {
+        if(this.isValidId(note_id))
         this.notes.splice(note_id,1);
     }
 
@@ -39,6 +43,20 @@ var notesapp = function(author){
         	searchnotes.push("no results found");
         }
         return searchnotes;
+    }
+
+    this.isValidId = function(note_id){
+        if(isNaN(note_id) || note_id < 0 || note_id > this.notes.length || this.notes[note_id] === undefined){
+            return false;
+        }
+        return true;
+    }
+
+    this.isValidNoteContent = function(note_content){
+        if(typeof note_content === 'string'){
+            return true;
+        }
+        return false;
     }
 }
 

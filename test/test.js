@@ -75,6 +75,23 @@ describe("NotesApp", function() {
             assert.equal(foundnotes[0],"Showing results for search [third]");
             assert.equal(foundnotes[1],"a third note");
         });
+    });
+
+    describe("isValidId",function(){
+        it("should check if the given id exists in the notes array",function(){
+            var notes = new notesapp();
+            assert.isFalse(notes.isValidId(244));
+            notes.addNote("new note");
+            assert.isTrue(notes.isValidId(0));
+        });
+    });
+
+    describe("isValidNoteContent",function(){
+        it("should check if the given note content is valid",function(){
+            var notes = new notesapp();
+            assert.isFalse(notes.isValidNoteContent(42));
+            assert.isTrue(notes.isValidNoteContent("42"));
+        });
     })
 })
 
