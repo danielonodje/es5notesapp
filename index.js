@@ -23,6 +23,10 @@ var notesapp = function(author){
     this.getNote = function(note_id) {
         return this.notes[note_id];
     }
+
+    this.deleteNote = function(note_id) {
+        this.notes.splice(note_id,1);
+    }
 }
 
 module.exports = notesapp;

@@ -22,7 +22,7 @@ describe("NotesApp", function() {
 
     describe("editNote",function(){
         it("should edit an existing note",function(){
-            notes = new notesapp();
+            var notes = new notesapp();
             notes.addNote("a note");
             notes.editNote(0,"check note");
             assert.equal(notes.notes[0],"check note");
@@ -31,7 +31,7 @@ describe("NotesApp", function() {
 
     describe("listNotes",function(){
         it("should list all existing notes",function(){
-            notes = new notesapp();
+            var notes = new notesapp();
             notes.addNote("a note");
             notes.addNote("another note");
             notesarray = notes.listNotes();
@@ -43,12 +43,24 @@ describe("NotesApp", function() {
 
     describe("getNote",function(){
         it("should return the requested note",function(){
-            notes = new notesapp();
+            var notes = new notesapp();
             notes.addNote("a note");
             var note = notes.getNote(0);
             assert.typeOf(note,'string');
             assert.equal(note,'a note');
-        })
+        });
+    });
+
+    describe("deleteNote",function(){
+        it("should delete an existing note",function(){
+            var notes = new notesapp();
+            notes.addNote("a note");
+            notes.addNote("a note");
+            var beforesize = notes.notes.length;
+            notes.deleteNote(0);
+            var aftersize = notes.notes.length;
+            assert.operator(aftersize,"<", beforesize);
+        });
     })
 })
 
